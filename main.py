@@ -14,21 +14,21 @@ async def check_license(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     key = ' '.join(context.args)
-    url = API_URL + f"check&key={key}"
+    url = f"https://keyauth.win/api/seller/?sellerkey={KEYAUTH_SELLER_KEY}&type=verify&key={key}"
 
     try:
         response = requests.get(url).json()
-        print(f"API Request URL: {url}")
-        print(f"API Response: {response}")
+        print(f"API Request URL: {url}")  # Debugging log
+        print(f"API Response: {response}")  # Debugging log
 
         if response.get("success"):
-            await update.message.reply_text(f"✅ Key is valid! Expires: {response['expiry']}")
+            await update.message.reply_text(f"✅ Key exists and is valid.")
         else:
-            await update.message.reply_text(f"❌ Invalid or expired key.\n\nResponse: {response}")
+            await update.message.reply_text(f"❌ Key does not exist or is invalid.\n\nResponse: {response}")
 
     except Exception as e:
         await update.message.reply_text(f"❌ Error checking key: {e}")
-
+        
 async def add_license(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(context.args) < 2:
         await update.message.reply_text("❌ Usage: `/add <license_key> <duration_in_days>`")
