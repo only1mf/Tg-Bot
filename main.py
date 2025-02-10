@@ -5,7 +5,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Load API keys from Railway environment variables
 KEYAUTH_SELLER_KEY = os.getenv("KEYAUTH_SELLER_KEY")
-API_URL = f"https://normality.cc/api/seller/?sellerkey={KEYAUTH_SELLER_KEY}&type="
+API_URL = f"https://keyauth.win/api/seller/?sellerkey={KEYAUTH_SELLER_KEY}&type="
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 async def check_license(update: Update, context: ContextTypes.DEFAULT_TYPE):
