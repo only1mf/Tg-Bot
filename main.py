@@ -1,8 +1,8 @@
 import requests  
 from telegram.ext import Updater, CommandHandler  
 
-API_URL = "https://keyauth.win/api/seller/?sellerkey=YOUR_SELLER_KEY&type=check&key="  
-TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"  
+API_URL = "https://keyauth.win/api/seller/?sellerkey=KEYAUTH_SELLER_KEY&type=check&key="  
+TELEGRAM_BOT_TOKEN1 = "TELEGRAM_BOT_TOKEN"  
 
 def check_license(update, context):  
     key = ' '.join(context.args)  
@@ -12,7 +12,7 @@ def check_license(update, context):
     else:  
         update.message.reply_text("❌ Invalid or expired key.")  
 
-updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)  
+updater = Updater(TELEGRAM_BOT_TOKEN1, use_context=True)  
 dp = updater.dispatcher  
 dp.add_handler(CommandHandler("check", check_license))  
 
